@@ -51,58 +51,10 @@
         echo "<input type='hidden' name='operator' value='{$op_sign}'>";
         ?>
         <p><input type="submit" value="回答する"></p>
-
-        <br>
-
-        ---------------------------------------------------------------------
-
-
-        <br>
-
-        <!-- 問２ -->
-
-        <p>問２：計算して下さい。</p>
-        <?php
-        $correct_answers = array();
-        for ($i = 0; $i < 10; $i++) {
-            $num1 = rand(1, 10);
-            $num2 = rand(1, 10);
-            $operator = rand(1, 4);
-            switch ($operator) {
-                case 1:
-                    $problem = "$num1 + $num2 = ";
-                    $seikai = $num1 + $num2;
-                    break;
-                case 2:
-                    $problem = "$num1 - $num2 = ";
-                    $seikai = $num1 - $num2;
-                    break;
-                case 3:
-                    $problem = "$num1 * $num2 = ";
-                    $seikai = $num1 * $num2;
-                    break;
-                case 4:
-                    $problem = "$num1 / $num2 = ";
-                    $seikai = $num1 / $num2;
-                    break;
-            }
-            $correct_answers[$i] = $seikai;
-            // 各問題の回答が name='answers[]'として送信される。（[]は変数が配列であることを意味する）
-            echo "<p>$problem<input type='number' name='answers[]'></p>";
-            echo "<input type='hidden' name='correct_answers[]' value='$seikai'>";
-        }
-        ?>
-        <input type="submit" value="回答する">
-
-        <!-- 問３ -->
-        <p>問３：計算して下さい。</p>
     </form>
-
 </body>
 
 </html>
-
-
 
 <!-- <?php
         $op = ['×', '-', '÷', '＋'];
