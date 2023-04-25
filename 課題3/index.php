@@ -18,7 +18,7 @@
         $correct_answers = array();
         for ($i = 0; $i < 10; $i++) {
             $num1 = rand(1, 10);
-            $num2 = rand(1, 10);
+            $num2 = rand(0, 10);
             $operator = rand(1, 4);
             switch ($operator) {
                 case 1:
@@ -38,13 +38,18 @@
                     try {
                         // $num2が０である時
                         if ($num2 == 0) {
-                            // 例外処理（＝意図しないエラーが発生した時に備えて対策する）
+                            // エラー処理（＝意図しないエラーが発生した時に備えて対策する）
                             throw new Exception('0で割れません');
                             // $num2が0でなければ、$num1を$num2で割った結果を$seikaiに代入
                         } else {
                             $seikai = $num1 / $num2;
+                            // $seikaiが小数点を含む場合
+                            if (strpos($seikai, '.') !== false) {
+                                // 小数点以下3桁まで四捨五入
+                                $seikai = round($seikai, 3);
+                            }
                         }
-                        // 例外が発生した場合に実行
+                        // エラーが発生した場合に実行
                     } catch (Exception $e) {
                         $seikai = 'エラー';
                     }
