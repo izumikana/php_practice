@@ -7,13 +7,17 @@
 </head>
 
 <body>
-    <!-- 問４ -->
+    <!-- 問５ -->
+
     <form method="post" action="answer.php">
-        <p>問４：計算して下さい。<br>
-            ※負の解にならない問題作成をしてください。<br>
-            ※割り算の解が小数点にならない問題の作成をしてください。<br>
+        <p>問５：計算して下さい。<br>
+            回答までの時間を計測して、答え合わせのページに表示してください。<br>
+            何問正解したか表示してください。 例）4/10
         </p>
         <?php
+        $start_time = microtime(true);
+        $end_time = microtime(true);
+
         $correct_answers = array();
         for ($i = 0; $i < 10; $i++) {
             $num2 = rand(1, 10);
@@ -38,7 +42,6 @@
                     break;
                 case 4:
                     $problem = "$num1 ÷ $num2 = ";
-                    // 元の数値=商×割る数＋余り
                     $seikai = $quotient;
                     break;
             }
@@ -46,6 +49,7 @@
             // 各問題の回答が name='answers[]'として送信される。（[]は変数が配列であることを意味する）
             echo "<p>$problem<input type='text' name='answers[]'></p>";
             echo "<input type='hidden' name='correct_answers[]' value='$seikai'>";
+            echo "<input type='hidden' name='start_time' value='$start_time'>";
         }
         ?>
         <input type="submit" value="回答する">
