@@ -10,7 +10,7 @@
             private $answer;
 
             // コンストラクタ（初期化メソッド）
-            private function __construct()
+            public function __construct()
             {
                 $this->num2 = rand(1, 10);
                 $this->num1 = $this->num2 * rand(1, 10);

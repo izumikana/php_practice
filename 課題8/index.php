@@ -26,6 +26,16 @@ index.phpで計算式の最小、最大値を設定できるようにしてく�
             <option value="divide">÷</option>
         </select>
         <br>
+        <label for="max_questions">最大出題数：</label>
+        <input type="number" name="max_questions" id="max_questions">
+        <br>
+        <label for="min_value">最小値：</label>
+        <input type="number" name="min_value" id="min_value" value="<?php echo $defaultMinValue; ?>">
+        <br>
+        <label for="max_value">最大値：</label>
+        <input type="number" name="max_value" id="max_value" value="<?php echo $defaultMaxValue; ?>">
+        <br>
+        <br>
         <br>
         <input type="submit" value="問題を作成する">
     </form>
