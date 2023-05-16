@@ -11,9 +11,16 @@
     <?php
     $correct_answers = $_POST['correct_answers'];
     $user_answers = $_POST['answers'];
-    $start_time = $_POST['start_time'];
+
+    // 変数を空の文字列で初期化する
+    $start_time = 0.0;
+    if (isset($_POST['start_time'])) {
+        // POSTされた値を変数に割り当てる
+        $start_time = (float)$_POST['start_time'];
+    }
+    //現在時刻の時間
     $end_time = microtime(true);
-    $total_time = $end_time - $start_time;
+    $total_time = round($end_time - $start_time, 2); // 回答までの時間
 
     for ($i = 0; $i < count($correct_answers); $i++) {
         // 各回答に対して!is_numeric()関数を使って数値かどうか判定
@@ -28,7 +35,7 @@
     }
 
     // 回答までの時間を表示
-    echo "<p>回答までの時間：" . round($total_time, 2) . "秒</p>";
+    echo "<p>回答までの時間：" . $total_time . "秒</p>";
 
     // 正解数を計算
     $num_correct = 0;

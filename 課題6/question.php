@@ -8,24 +8,25 @@
 
 <body>
     <!-- 問６ -->
-
+    <p>問６：計算して下さい。<br>
+        回答までの時間を計測して、答え合わせのページに表示してください。<br>
+        何問正解したか表示してください。 例）4/10
+    </p>
     <form method="post" action="answer.php">
         <?php
-        require_once('QuestionsClass.php');
+        require_once('./css/QuestionsClass.php');
 
-        $start_time = microtime(true);
         $questions = array();
 
         for ($i = 0; $i < 10; $i++) {
+            // インスタンス化（実体化）
             $question = new Question();
             $questions[] = $question;
             echo "<p>" . $question->getProblem() . "<input type='text' name='answers[]'></p>";
             echo "<input type='hidden' name='correct_answers[]' value='" . $question->getAnswer() . "'>";
         }
-
-        echo "<input type='hidden' name='start_time' value='$start_time'>";
-
         ?>
+        <input type="submit" value="回答する">
     </form>
 
 </body>
